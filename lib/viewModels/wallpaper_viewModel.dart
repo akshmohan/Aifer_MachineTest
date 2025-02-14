@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:aifer_machine_test/core/api/client.dart';
 import 'package:aifer_machine_test/core/services/services.dart';
 import 'package:aifer_machine_test/models/wallpaper_model.dart';
@@ -18,13 +17,8 @@ class WallpaperViewmodel extends AsyncNotifier<List<WallpaperModel>>{
 
   Future<List<WallpaperModel>> fetchData() async{
     try {
-      
     final response = await services.getWallpapers();
-
     return response;
-
-
-
     } catch (e) {
       throw Exception(e.toString());
     }
