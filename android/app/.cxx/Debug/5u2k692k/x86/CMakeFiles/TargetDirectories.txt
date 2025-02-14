@@ -1,0 +1,2 @@
+/Users/kawikakawikamac/Desktop/Aifer/aifer_machine_test/android/app/.cxx/Debug/5u2k692k/x86/CMakeFiles/edit_cache.dir
+/Users/kawikakawikamac/Desktop/Aifer/aifer_machine_test/android/app/.cxx/Debug/5u2k692k/x86/CMakeFiles/rebuild_cache.dir

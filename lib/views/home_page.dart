@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:aifer_machine_test/viewModels/wallpaper_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -57,8 +59,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                 return AspectRatio(
                   aspectRatio:
                       wallpapers[index].width / wallpapers[index].height,
-                  child: Image.network(wallpapers[index].urls.regular,
-                      fit: BoxFit.cover),
+                  child: GestureDetector(
+                    onTap: () async {
+                      bool res = await ref
+                          .read(wallpaperProvider.notifier)
+                          .download(wallpapers[index].links.download);
+                      log(res.toString());
+                    },
+                    child: Image.network(wallpapers[index].urls.regular,
+                        fit: BoxFit.cover),
+                  ),
                 );
               },
             ),

@@ -1,4 +1,5 @@
 import 'package:aifer_machine_test/core/api/client.dart';
+import 'package:aifer_machine_test/core/download_service.dart';
 import 'package:aifer_machine_test/core/services/services.dart';
 import 'package:aifer_machine_test/models/wallpaper_model.dart';
 import 'package:flutter/material.dart';
@@ -31,5 +32,20 @@ class WallpaperNotifier extends StateNotifier<List<WallpaperModel>> {
     }
 
     _isFetching = false;
+  }
+
+
+  Future<bool> download(String imageUrl) async{
+    try {
+      String folderPath = await downloadFolder() ?? "";
+       if (folderPath.isEmpty) {
+       
+        return false;
+      }
+        bool res = await Services(dioClient: DioClient()).downloadImage(imageUrl, folderPath);
+      return res;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
   }
 }
