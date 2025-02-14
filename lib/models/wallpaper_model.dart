@@ -5,7 +5,7 @@ List<WallpaperModel> wallpaperModelFromJson(String str) => List<WallpaperModel>.
 String wallpaperModelToJson(List<WallpaperModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class WallpaperModel {
-    String id;
+    String? id;
     String slug;
     AlternativeSlugs alternativeSlugs;
     DateTime createdAt;
@@ -65,7 +65,7 @@ class WallpaperModel {
         color: json["color"],
         blurHash: json["blur_hash"],
         description: json["description"],
-        altDescription: json["alt_description"],
+        altDescription: json["alt_description"]??"",
         breadcrumbs: List<dynamic>.from(json["breadcrumbs"].map((x) => x)),
         urls: Urls.fromJson(json["urls"]),
         links: WallpaperModelLinks.fromJson(json["links"]),
@@ -269,12 +269,12 @@ class User {
         firstName: json["first_name"],
         lastName: json["last_name"],
         twitterUsername: json["twitter_username"],
-        portfolioUrl: json["portfolio_url"],
+        portfolioUrl: json["portfolio_url"]??"",
         bio: json["bio"],
         location: json["location"],
         links: UserLinks.fromJson(json["links"]),
         profileImage: ProfileImage.fromJson(json["profile_image"]),
-        instagramUsername: json["instagram_username"],
+        instagramUsername: json["instagram_username"] ??"",
         totalCollections: json["total_collections"],
         totalLikes: json["total_likes"],
         totalPhotos: json["total_photos"],
@@ -390,8 +390,8 @@ class Social {
     });
 
     factory Social.fromJson(Map<String, dynamic> json) => Social(
-        instagramUsername: json["instagram_username"],
-        portfolioUrl: json["portfolio_url"],
+        instagramUsername: json["instagram_username"]??"",
+        portfolioUrl: json["portfolio_url"]??"",
         twitterUsername: json["twitter_username"],
         paypalEmail: json["paypal_email"],
     );
@@ -467,7 +467,7 @@ class StreetPhotography {
 
     factory StreetPhotography.fromJson(Map<String, dynamic> json) => StreetPhotography(
         status: json["status"],
-        approvedOn: DateTime.parse(json["approved_on"]),
+        approvedOn: DateTime.parse(json["approved_on"]??"2025-02-14T05:30:57Z"),
     );
 
     Map<String, dynamic> toJson() => {
